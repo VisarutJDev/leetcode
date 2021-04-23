@@ -16,4 +16,8 @@ func TestBFSDFS(t *testing.T) {
 	// fmt.Println(tree.BFS())
 
 	fmt.Println(tree.DFS())
+
+	fmt.Println(tree.IsBalance())
+
+	fmt.Println(tree.RouteTwoNode())
 }

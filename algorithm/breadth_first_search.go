@@ -2,6 +2,7 @@ package algorithm
 
 import (
 	"errors"
+	"math"
 )
 
 // READ HERE https://medium.com/@houzier.saurav/dfs-and-bfs-golang-d5818ec690d3
@@ -181,4 +182,29 @@ func (t *Tree) Replace(v int) error {
 	}
 
 	return nil
+}
+
+func (t *Tree) IsBalance() bool {
+	return !(checkHeight(t) == -1)
+}
+
+func checkHeight(root *Tree) int {
+	if root == nil {
+		return 0
+	}
+	leftHeight := checkHeight(root.Left)
+	if leftHeight == -1 {
+		return -1
+	}
+	rightHeight := checkHeight(root.Right)
+	if rightHeight == -1 {
+		return -1
+	}
+
+	diff := leftHeight - rightHeight
+	if math.Abs(float64(diff)) > 1 {
+		return -1
+	} else {
+		return int(math.Max(float64(leftHeight), float64(rightHeight))) + 1
+	}
 }
