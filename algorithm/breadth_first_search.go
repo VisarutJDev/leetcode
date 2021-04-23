@@ -4,6 +4,8 @@ import (
 	"errors"
 )
 
+// READ HERE https://medium.com/@houzier.saurav/dfs-and-bfs-golang-d5818ec690d3
+
 //Tree to print the tree in breadth first fashion
 type Tree struct {
 	Value  int
@@ -28,12 +30,13 @@ func BFSUtil(queue []*Tree, res []int) []int {
 		return res
 	}
 	res = append(res, queue[0].Value)
-	if queue[0].Right != nil {
-		queue = append(queue, queue[0].Right)
-	}
 	if queue[0].Left != nil {
 		queue = append(queue, queue[0].Left)
 	}
+	if queue[0].Right != nil {
+		queue = append(queue, queue[0].Right)
+	}
+
 	return BFSUtil(queue[1:], res)
 }
 
